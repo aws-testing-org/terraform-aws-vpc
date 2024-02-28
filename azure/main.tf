@@ -34,7 +34,7 @@ resource "aws_vpc" "test" {
 
 resource "aws_subnet" "main" {
   vpc_id     = resource.aws_vpc.test.id
-  cidr_block = cidrsubnet(resource.aws_vpc_ipam_pool_cidr.test.cidr, 2,8)
+  cidr_block = cidrsubnet(resource.aws_vpc_ipam_pool_cidr.test.cidr, 8,2)
 }
 
 # Provision of Internet Gateway
