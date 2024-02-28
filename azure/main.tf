@@ -43,9 +43,9 @@ resource "aws_internet_gateway" "gw" {
 # Creation of Route table
 
 resource "aws_route_table" "example" {
-  vpc_id = aws_vpc.example.id
-
+  vpc_id = resource.aws_vpc.test.id
   route {
     cidr_block = resource.aws_vpc_ipam_pool_cidr.test.cidr
     gateway_id = resource.aws_internet_gateway.gw.id
   }
+}
