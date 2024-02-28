@@ -20,6 +20,7 @@ resource "aws_vpc_ipam_pool_cidr" "test" {
 }
 
 resource "aws_vpc" "test" {
+  name = "demo-vpc"
   ipv4_ipam_pool_id   = aws_vpc_ipam_pool.test.id
   ipv4_netmask_length = 24
   depends_on = [
