@@ -1,5 +1,7 @@
 data "aws_region" "current" {}
 
+# Provision of VPC using IP Address management
+
 resource "aws_vpc_ipam" "test" {
   operating_regions {
     region_name = data.aws_region.current.name
@@ -23,4 +25,11 @@ resource "aws_vpc" "test" {
   depends_on = [
     aws_vpc_ipam_pool_cidr.test
   ]
+}
+
+# Provision of Subnet for the created VPC
+
+resource "aws_subnet" "main" {
+  vpc_id     = aws_vpc.main.id
+  cidr_block = cidrsubnet(resource.aws_vpc_ipam_pool_cidr.test.cidr, 8, 4)
 }
