@@ -35,6 +35,17 @@ resource "aws_subnet" "main" {
 }
 
 # Provision of Internet Gateway
+
 resource "aws_internet_gateway" "gw" {
   vpc_id = resource.aws_vpc.test.id
 }
+
+# Creation of Route table
+
+resource "aws_route_table" "example" {
+  vpc_id = aws_vpc.example.id
+
+  route {
+    cidr_block = resource.aws_vpc_ipam_pool_cidr.test.cidr
+    gateway_id = resource.aws_internet_gateway.gw.id
+  }
