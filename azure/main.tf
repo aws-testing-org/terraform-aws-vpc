@@ -35,3 +35,6 @@ resource "aws_subnet" "main" {
 }
 
 # Provision of Internet Gateway
+resource "aws_internet_gateway" "gw" {
+  vpc_id = resource.aws_vpc.test.id
+}
