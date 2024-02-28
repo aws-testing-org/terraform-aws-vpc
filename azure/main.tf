@@ -34,7 +34,7 @@ resource "aws_vpc" "test" {
 
 resource "aws_subnet" "main" {
   vpc_id     = resource.aws_vpc.test.id
-  cidr_block = "10.0.0.2/24"
+  cidr_block = "10.0.0.0/24"
 }
 
 # Provision of Internet Gateway
