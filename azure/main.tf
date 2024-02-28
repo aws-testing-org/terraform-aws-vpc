@@ -49,3 +49,10 @@ resource "aws_route_table" "example" {
     gateway_id = resource.aws_internet_gateway.gw.id
   }
 }
+
+#Route table association to the created VPC
+
+resource "aws_route_table_association" "test" {
+  subnet_id      = resource.aws_subnet.main.id
+  route_table_id = resource.aws_route_table.example.id
+}
