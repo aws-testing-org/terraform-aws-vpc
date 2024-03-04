@@ -35,6 +35,9 @@ resource "aws_vpc" "test" {
 resource "aws_subnet" "main" {
   vpc_id     = resource.aws_vpc.test.id
   cidr_block = "10.0.0.0/24"
+  tags = {
+    name = "demo-subnet"
+}
 }
 
 # Provision of Internet Gateway
