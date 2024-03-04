@@ -44,6 +44,9 @@ resource "aws_subnet" "main" {
 
 resource "aws_internet_gateway" "gw" {
   vpc_id = resource.aws_vpc.test.id
+  tags = {
+    Name = "demo-igw"
+  }
 }
 
 # Creation of Route table
@@ -53,6 +56,9 @@ resource "aws_route_table" "example" {
   route {
     cidr_block = resource.aws_vpc_ipam_pool_cidr.test.cidr
     gateway_id = resource.aws_internet_gateway.gw.id
+  }
+  tags = {
+    Name = "demo-route_table"
   }
 }
 
