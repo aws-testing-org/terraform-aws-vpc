@@ -21,7 +21,7 @@ resource "aws_vpc_ipam_pool_cidr" "test" {
 
 resource "aws_vpc" "test" {
   tags = {
-    name = "demo-vpc"
+    Name = "demo-vpc"
   }
   ipv4_ipam_pool_id   = aws_vpc_ipam_pool.test.id
   ipv4_netmask_length = 24
@@ -36,7 +36,7 @@ resource "aws_subnet" "main" {
   vpc_id     = resource.aws_vpc.test.id
   cidr_block = "10.0.0.0/24"
   tags = {
-    name = "demo-subnet"
+    Name = "demo-subnet"
 }
 }
 
